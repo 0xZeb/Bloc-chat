@@ -9,8 +9,8 @@ class RoomList extends Component {
       rooms: []
     };
 
-    this.roomsRef = this.props.firebase.database().ref('rooms');
-
+    this.roomsRef = this.props.firebase.database().ref('room');
+    console.log(this.roomsRef);
   }
 
     componentDidMount() {
@@ -21,6 +21,8 @@ class RoomList extends Component {
         this.setState({rooms: this.state.rooms.concat(room)});
       });
     }
+
+
 
   render() {
     return (
