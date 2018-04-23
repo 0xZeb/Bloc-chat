@@ -27,8 +27,7 @@ class App extends Component {
 
 
   getActiveRoom(room){
-      let selectedRoom = room;
-      console.log("making it to App.js: " + selectedRoom);
+      const selectedRoom = room;
       this.setState({ activeRoom: selectedRoom});
   }
 
@@ -37,16 +36,15 @@ class App extends Component {
     return (
       <div className="App">
         <main>
-          <RoomList firebase={firebase}
-           getActiveRoom = { (room)=> this.getActiveRoom(room) }
-           activeRoom = {this.state.activeRoom }
-
-
-            />
-          <MessageList firebase={firebase}
-           activeRoom = {this.state.activeRoom}
-
-           />
+          <RoomList
+             firebase={firebase}
+             getActiveRoom = { (room)=> this.getActiveRoom(room) }
+             activeRoom = {this.state.activeRoom }
+          />
+          <MessageList
+             firebase={firebase}
+             activeRoom = {this.state.activeRoom}
+          />
         </main>
       </div>
     );
