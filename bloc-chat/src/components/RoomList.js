@@ -46,7 +46,7 @@ class RoomList extends Component {
           </ul>
           <section className="form">
             <form onSubmit={ this.createRoom.bind(this) } >
-              <p>Create a room</p>
+              <h3>Create a room</h3>
               <input type="text" ref="roomName" />
               <button type="submit"> Create Room</button>
             </form>

@@ -6,9 +6,6 @@ class MessageList extends Component{
 
     this.state = {
       messages: []
-
-
-
     }
 
     this.messageRef = this.props.firebase.database().ref('messages');
@@ -49,6 +46,7 @@ class MessageList extends Component{
       return (
       <section className="message-log">
         <section className="form">
+          <h3>Send a Message</h3>
             <form className="message-maker" onSubmit={ this.sendMessage.bind(this) }>
                 <input type="text" ref="message" />
 
