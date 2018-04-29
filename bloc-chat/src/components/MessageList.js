@@ -24,22 +24,37 @@ class MessageList extends Component{
     //send msg to database
  sendMessage(e){
          e.preventDefault();
+
+
         this.messageRef.push({
             content: this.refs.message.value,
             roomId: this.props.activeRoom,
-            sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
+            sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+            userId: this.props.user.displayName
         })
       //clear input on click
+
       this.refs.message.value = "";
     }
 
+    showTime(ms){
+      const convertedTime = new Date(ms);
+
+      return convertedTime.toLocaleTimeString();
+
+    }
 
     render(){
+
       const selectedRoom = this.props.activeRoom;
       const messageList = this.state.messages
         .filter(message => message.roomId === selectedRoom)
         .map(message => {
-          return <li className='message' key={message.key}>{message.content}</li>
+          return <li className='message' key={message.key}>
+             <span className="content"> {message.content} </span> 
+             <span className="user"> {message.userId} </span>
+             <span className="time"> { this.showTime(message.sentAt)} </span>
+          </li>
       })
 
 

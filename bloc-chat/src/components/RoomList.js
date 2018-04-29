@@ -34,13 +34,13 @@ class RoomList extends Component {
     return (
       <section className='roomlist'>
       <h3>Active Room</h3>
-      <span>{this.props.activeRoom}</span>
+      <span> {this.props.roomName} </span>
           <h1 className='title'>Bloc Chat</h1>
           <ul className='sidebar-list'>
           {
             this.state.rooms.map((room, index) =>
               <li className='rooms'
-              onClick={ ()=>this.props.getActiveRoom(room.key) }
+              onClick={ ()=>this.props.getActiveRoom(room.key, room.name) }
                key={index}> {room.name} </li>
           )}
           </ul>
