@@ -25,14 +25,19 @@ class MessageList extends Component{
  sendMessage(e){
          e.preventDefault();
 
+         let displayName = "Guest";
+         if(this.props.user){
+           displayName = this.props.user.displayName;
+         }
 
         this.messageRef.push({
             content: this.refs.message.value,
             roomId: this.props.activeRoom,
             sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-            userId: this.props.user.displayName
+            userId: displayName
         })
-      //clear input on click
+
+
 
       this.refs.message.value = "";
     }
@@ -51,7 +56,7 @@ class MessageList extends Component{
         .filter(message => message.roomId === selectedRoom)
         .map(message => {
           return <li className='message' key={message.key}>
-             <span className="content"> {message.content} </span> 
+             <span className="content"> {message.content} </span>
              <span className="user"> {message.userId} </span>
              <span className="time"> { this.showTime(message.sentAt)} </span>
           </li>

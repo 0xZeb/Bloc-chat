@@ -30,6 +30,12 @@ class RoomList extends Component {
         this.refs.roomName.value = "";
     }
 
+    deleteRoom(e){
+      e.preventDefault();
+
+
+    }
+
   render() {
     return (
       <section className='roomlist'>
@@ -39,9 +45,16 @@ class RoomList extends Component {
           <ul className='sidebar-list'>
           {
             this.state.rooms.map((room, index) =>
+
               <li className='rooms'
-              onClick={ ()=>this.props.getActiveRoom(room.key, room.name) }
-               key={index}> {room.name} </li>
+               onClick={ ()=>this.props.getActiveRoom(room.key, room.name) }
+               key={index}
+                > {room.name}
+                   <input type="radio" id={index} />
+
+                </li>
+
+
           )}
           </ul>
           <section className="form">
@@ -50,6 +63,13 @@ class RoomList extends Component {
               <input type="text" ref="roomName" />
               <button type="submit"> Create Room</button>
             </form>
+          </section>
+
+       <section>
+            
+            <h3>Delete A Room</h3>
+            <button type="submit"  >Delete Room </button>
+
           </section>
 
 
