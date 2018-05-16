@@ -51,7 +51,7 @@ class MessageList extends Component{
         .filter(message => message.roomId === selectedRoom)
         .map(message => {
           return <li className='message' key={message.key}>
-             <span className="content"> {message.content} </span> 
+             <span className="content"> {message.content} </span>
              <span className="user"> {message.userId} </span>
              <span className="time"> { this.showTime(message.sentAt)} </span>
           </li>
